@@ -1,0 +1,228 @@
+{
+  "table_name": "amazon_security_lake_glue_db_us_east_1.amazon_security_lake_table_us_east_1_waf_2_0",
+  "description": "The amazon_security_lake_table_us_east_1_waf_2_0 is an external table that stores AWS WAF (Web Application Firewall) logs for monitoring and analyzing web traffic.",
+  "columns": [
+    {
+      "name": "metadata",
+      "type": "struct",
+      "description": "Metadata information about the WAF event",
+      "fields": [
+        {"name": "product", "type": "struct", "fields": [
+          {"name": "feature", "type": "struct", "fields": [
+            {"name": "uid", "type": "string"}
+          ]},
+          {"name": "version", "type": "string"},
+          {"name": "vendor_name", "type": "string"},
+          {"name": "name", "type": "string"}
+        ]},
+        {"name": "labels", "type": "array<string>"},
+        {"name": "profiles", "type": "array<string>"},
+        {"name": "version", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "src_endpoint",
+      "type": "struct",
+      "description": "Source endpoint information",
+      "fields": [
+        {"name": "svc_name", "type": "string"},
+        {"name": "uid", "type": "string"},
+        {"name": "ip", "type": "string"},
+        {"name": "location", "type": "struct", "fields": [
+          {"name": "country", "type": "string"}
+        ]}
+      ],
+      "optional": true
+    },
+    {
+      "name": "http_request",
+      "type": "struct",
+      "description": "HTTP request information",
+      "fields": [
+        {"name": "url", "type": "struct", "fields": [
+          {"name": "path", "type": "string"},
+          {"name": "hostname", "type": "string"}
+        ]},
+        {"name": "version", "type": "string"},
+        {"name": "http_method", "type": "string"},
+        {"name": "uid", "type": "string"},
+        {"name": "args", "type": "string"},
+        {"name": "http_headers", "type": "array<struct>", "fields": [
+          {"name": "name", "type": "string"},
+          {"name": "value", "type": "string"}
+        ]},
+        {"name": "user_agent", "type": "string"},
+        {"name": "x_forwarded_for", "type": "array<string>"},
+        {"name": "referrer", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "firewall_rule",
+      "type": "struct",
+      "description": "Firewall rule information",
+      "fields": [
+        {"name": "uid", "type": "string"},
+        {"name": "type", "type": "string"},
+        {"name": "condition", "type": "string"},
+        {"name": "match_location", "type": "string"},
+        {"name": "match_details", "type": "array<string>"},
+        {"name": "rate_limit", "type": "int"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "http_status",
+      "type": "int",
+      "description": "HTTP status code",
+      "optional": true
+    },
+    {
+      "name": "time",
+      "type": "bigint",
+      "description": "Timestamp of the WAF event (epoch)",
+      "optional": false
+    },
+    {
+      "name": "time_dt",
+      "type": "timestamp",
+      "description": "Datetime of the WAF event",
+      "optional": true
+    },
+    {
+      "name": "class_name",
+      "type": "string",
+      "description": "Name of the WAF event class",
+      "optional": false
+    },
+    {
+      "name": "class_uid",
+      "type": "int",
+      "description": "Unique identifier of the WAF event class",
+      "optional": false
+    },
+    {
+      "name": "category_name",
+      "type": "string",
+      "description": "Name of the WAF event category",
+      "optional": false
+    },
+    {
+      "name": "category_uid",
+      "type": "int",
+      "description": "Unique identifier of the WAF event category",
+      "optional": false
+    },
+    {
+      "name": "severity_id",
+      "type": "int",
+      "description": "Severity level identifier",
+      "optional": false
+    },
+    {
+      "name": "severity",
+      "type": "string",
+      "description": "Severity level description",
+      "optional": false
+    },
+    {
+      "name": "cloud",
+      "type": "struct",
+      "description": "Cloud provider information",
+      "fields": [
+        {"name": "provider", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "activity_name",
+      "type": "string",
+      "description": "Name of the activity associated with the WAF event",
+      "optional": false
+    },
+    {
+      "name": "activity_id",
+      "type": "int",
+      "description": "Unique identifier of the activity",
+      "optional": false
+    },
+    {
+      "name": "type_name",
+      "type": "string",
+      "description": "Name of the WAF event type",
+      "optional": false
+    },
+    {
+      "name": "type_uid",
+      "type": "bigint",
+      "description": "Unique identifier of the WAF event type",
+      "optional": false
+    },
+    {
+      "name": "action",
+      "type": "string",
+      "description": "Action taken by WAF",
+      "optional": true
+    },
+    {
+      "name": "action_id",
+      "type": "int",
+      "description": "Unique identifier of the action",
+      "optional": true
+    },
+    {
+      "name": "disposition",
+      "type": "string",
+      "description": "Disposition of the WAF event",
+      "optional": true
+    },
+    {
+      "name": "disposition_id",
+      "type": "int",
+      "description": "Unique identifier of the disposition",
+      "optional": true
+    },
+    {
+      "name": "unmapped",
+      "type": "map<string,string>",
+      "description": "Additional unmapped fields",
+      "optional": true
+    },
+    {
+      "name": "accountid",
+      "type": "string",
+      "description": "Account identifier",
+      "optional": true
+    },
+    {
+      "name": "region",
+      "type": "string",
+      "description": "Region information",
+      "optional": true
+    },
+    {
+      "name": "asl_version",
+      "type": "string",
+      "description": "Version of the Amazon Security Lake",
+      "optional": true
+    },
+    {
+      "name": "observables",
+      "type": "array<struct>",
+      "description": "Array of observable information",
+      "fields": [
+        {"name": "name", "type": "string"},
+        {"name": "value", "type": "string"},
+        {"name": "type", "type": "string"},
+        {"name": "type_id", "type": "int"}
+      ],
+      "optional": true
+    }
+  ],
+  "iceberg_parameters": {
+    "write_format_version": "2",
+    "format-version": "2",
+    "schema_id": "1"
+  }
+}

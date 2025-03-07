@@ -1,0 +1,286 @@
+{
+  "table_name": "amazon_security_lake_glue_db_us_east_1.amazon_security_lake_table_us_east_1_cloud_trail_mgmt_2_0",
+  "description": "The amazon_security_lake_table_us_east_1_cloud_trail_mgmt_2_0 is an external table that stores AWS CloudTrail management events for auditing and monitoring AWS account activity.",
+  "columns": [
+    {
+      "name": "metadata",
+      "type": "struct",
+      "description": "Metadata information about the CloudTrail event",
+      "fields": [
+        {"name": "product", "type": "struct", "fields": [
+          {"name": "version", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "vendor_name", "type": "string"},
+          {"name": "feature", "type": "struct", "fields": [
+            {"name": "name", "type": "string"}
+          ]}
+        ]},
+        {"name": "event_code", "type": "string"},
+        {"name": "uid", "type": "string"},
+        {"name": "profiles", "type": "array<string>"},
+        {"name": "version", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "time",
+      "type": "bigint",
+      "description": "Timestamp of the event",
+      "optional": false
+    },
+    {
+      "name": "time_dt",
+      "type": "timestamp",
+      "description": "Datetime of the event",
+      "optional": true
+    },
+    {
+      "name": "cloud",
+      "type": "struct",
+      "description": "Cloud-related information",
+      "fields": [
+        {"name": "region", "type": "string"},
+        {"name": "provider", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "api",
+      "type": "struct",
+      "description": "API call information",
+      "fields": [
+        {"name": "response", "type": "struct", "fields": [
+          {"name": "error", "type": "string"},
+          {"name": "message", "type": "string"},
+          {"name": "data", "type": "string"}
+        ]},
+        {"name": "operation", "type": "string"},
+        {"name": "version", "type": "string"},
+        {"name": "service", "type": "struct", "fields": [
+          {"name": "name", "type": "string"}
+        ]},
+        {"name": "request", "type": "struct", "fields": [
+          {"name": "data", "type": "string"},
+          {"name": "uid", "type": "string"}
+        ]}
+      ],
+      "optional": true
+    },
+    {
+      "name": "dst_endpoint",
+      "type": "struct",
+      "description": "Destination endpoint information",
+      "fields": [
+        {"name": "svc_name", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "actor",
+      "type": "struct",
+      "description": "Actor information",
+      "fields": [
+        {"name": "user", "type": "struct", "fields": [
+          {"name": "type", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "uid_alt", "type": "string"},
+          {"name": "uid", "type": "string"},
+          {"name": "account", "type": "struct", "fields": [
+            {"name": "uid", "type": "string"}
+          ]},
+          {"name": "credential_uid", "type": "string"}
+        ]},
+        {"name": "session", "type": "struct", "fields": [
+          {"name": "created_time_dt", "type": "timestamp"},
+          {"name": "is_mfa", "type": "boolean"},
+          {"name": "issuer", "type": "string"}
+        ]},
+        {"name": "invoked_by", "type": "string"},
+        {"name": "idp", "type": "struct", "fields": [
+          {"name": "name", "type": "string"}
+        ]}
+      ],
+      "optional": true
+    },
+    {
+      "name": "http_request",
+      "type": "struct",
+      "description": "HTTP request information",
+      "fields": [
+        {"name": "user_agent", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "src_endpoint",
+      "type": "struct",
+      "description": "Source endpoint information",
+      "fields": [
+        {"name": "uid", "type": "string"},
+        {"name": "ip", "type": "string"},
+        {"name": "domain", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "session",
+      "type": "struct",
+      "description": "Session information",
+      "fields": [
+        {"name": "uid", "type": "string"},
+        {"name": "uid_alt", "type": "string"},
+        {"name": "credential_uid", "type": "string"},
+        {"name": "issuer", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "policy",
+      "type": "struct",
+      "description": "Policy information",
+      "fields": [
+        {"name": "uid", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "resources",
+      "type": "array<struct>",
+      "description": "Resources affected by the event",
+      "fields": [
+        {"name": "uid", "type": "string"},
+        {"name": "owner", "type": "struct", "fields": [
+          {"name": "account", "type": "struct", "fields": [
+            {"name": "uid", "type": "string"}
+          ]}
+        ]},
+        {"name": "type", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "class_name",
+      "type": "string",
+      "description": "Name of the event class",
+      "optional": false
+    },
+    {
+      "name": "class_uid",
+      "type": "int",
+      "description": "Unique identifier of the event class",
+      "optional": false
+    },
+    {
+      "name": "category_name",
+      "type": "string",
+      "description": "Name of the event category",
+      "optional": false
+    },
+    {
+      "name": "category_uid",
+      "type": "int",
+      "description": "Unique identifier of the event category",
+      "optional": false
+    },
+    {
+      "name": "severity_id",
+      "type": "int",
+      "description": "Severity level identifier",
+      "optional": false
+    },
+    {
+      "name": "severity",
+      "type": "string",
+      "description": "Severity level description",
+      "optional": false
+    },
+    {
+      "name": "user",
+      "type": "struct",
+      "description": "User information",
+      "fields": [
+        {"name": "uid_alt", "type": "string"},
+        {"name": "uid", "type": "string"},
+        {"name": "name", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "activity_name",
+      "type": "string",
+      "description": "Name of the activity associated with the event",
+      "optional": false
+    },
+    {
+      "name": "activity_id",
+      "type": "int",
+      "description": "Unique identifier of the activity",
+      "optional": false
+    },
+    {
+      "name": "type_uid",
+      "type": "bigint",
+      "description": "Unique identifier of the event type",
+      "optional": false
+    },
+    {
+      "name": "type_name",
+      "type": "string",
+      "description": "Name of the event type",
+      "optional": false
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Status of the event",
+      "optional": true
+    },
+    {
+      "name": "is_mfa",
+      "type": "boolean",
+      "description": "Indicates if multi-factor authentication was used",
+      "optional": true
+    },
+    {
+      "name": "unmapped",
+      "type": "map<string,string>",
+      "description": "Additional unmapped fields",
+      "optional": true
+    },
+    {
+      "name": "accountid",
+      "type": "string",
+      "description": "Account identifier",
+      "optional": true
+    },
+    {
+      "name": "region",
+      "type": "string",
+      "description": "Region information",
+      "optional": true
+    },
+    {
+      "name": "asl_version",
+      "type": "string",
+      "description": "Version of the Amazon Security Lake",
+      "optional": true
+    },
+    {
+      "name": "observables",
+      "type": "array<struct>",
+      "description": "Array of observable information",
+      "fields": [
+        {"name": "name", "type": "string"},
+        {"name": "value", "type": "string"},
+        {"name": "type", "type": "string"},
+        {"name": "type_id", "type": "int"}
+      ],
+      "optional": true
+    }
+  ],
+  "iceberg_parameters": {
+    "write_format_version": "2",
+    "format-version": "2",
+    "schema_id": "1"
+  }
+}

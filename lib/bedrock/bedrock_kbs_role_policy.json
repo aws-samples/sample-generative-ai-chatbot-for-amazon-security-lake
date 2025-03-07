@@ -1,0 +1,61 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "BedrockInvokeModelStatement",
+            "Effect": "Allow",
+            "Action": [
+                "bedrock:InvokeModel"
+            ],
+            "Resource": [
+                "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v2:0"
+            ]
+        },
+        {
+            "Sid": "OpenSearchServerlessAPIAccessAllStatement",
+            "Effect": "Allow",
+            "Action": [
+                "aoss:APIAccessAll"
+            ],
+            "Resource": [
+                "arn:aws:aoss:us-east-1:237655209227:collection/ftek707f0tbp87kz5k6i"
+            ]
+        },
+        {
+            "Sid": "S3ListBucketStatement",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::sl-table-schema-kb-indexing"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceAccount": [
+                        "237655209227"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "S3GetObjectStatement",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::sl-table-schema-kb-indexing/*",
+                "arn:aws:s3:::sl-table-schema-kb-indexing/table_schema/*",
+                "arn:aws:s3:::sl-table-schema-kb-indexing/playbooks/*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceAccount": [
+                        "237655209227"
+                    ]
+                }
+            }
+        }
+    ]
+}

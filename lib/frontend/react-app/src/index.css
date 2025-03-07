@@ -1,0 +1,91 @@
+
+/* Message bubbles */
+.message-bubble {
+  padding: 15px;
+  border-radius: 10px;
+}
+.message-bubble p:first-child {
+  margin-top: 0;
+}
+.message-bubble p:last-child {
+  margin-bottom: 0;
+}
+.message-bubble-user {
+  background-color: #ADD8F6;
+}
+.message-bubble-assistant {
+  background-color: #F0F0F0;
+  width: 90%;
+}
+.message-bubble-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Lists */
+li p {
+  margin-bottom: 0;
+}
+
+/* Code block */
+pre:not(:has(.ace-cloud_editor)) {
+  background-color: #232F3E;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+.ace-cloud_editor {
+  background-color: #ddd !important;
+  color: #232F3E !important;
+  padding: 20px !important;
+  border: 1px solid #232F3E;
+  border-radius: 10px !important;
+}
+
+/* Table */
+table {
+  border-collapse: collapse;
+}
+th {
+  background-color: #232F3E;
+  color: white;
+  padding: 7px;
+}
+th:first-child {
+  border-top-left-radius: 10px;
+}
+th:last-child {
+  border-top-right-radius: 10px;
+}
+td {
+  background-color: white;
+  padding: 7px;
+  border-left: 1px solid #232F2E;
+}
+td:first-child {
+  border-left: 0;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+/* Blockquote */
+blockquote {
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border-left: 5px solid #232F2E;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Blinking animation for streaming cursor */
+.blink {
+    animation: blinking 1s infinite;
+}
+@keyframes blinking {
+    0% { opacity: 0%; }
+    100% { opacity: 100%; }
+}

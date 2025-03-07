@@ -1,0 +1,4 @@
+requests
+requests-aws4auth
+opensearch-py
+aws-lambda-powertools
