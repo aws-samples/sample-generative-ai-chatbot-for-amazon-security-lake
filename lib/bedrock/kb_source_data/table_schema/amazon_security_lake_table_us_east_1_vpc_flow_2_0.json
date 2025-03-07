@@ -1,0 +1,244 @@
+{
+  "table_name": "amazon_security_lake_glue_db_us_east_1.amazon_security_lake_table_us_east_1_vpc_flow_2_0",
+  "description": "The amazon_security_lake_table_us_east_1_vpc_flow_2_0 is an external table that stores VPC Flow Logs from Amazon Web Services (AWS) for network traffic analysis and monitoring purposes.",
+  "columns": [
+    {
+      "name": "metadata",
+      "type": "struct",
+      "description": "Metadata information about the VPC flow log",
+      "fields": [
+        {"name": "product", "type": "struct", "fields": [
+          {"name": "version", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "feature", "type": "struct", "fields": [
+            {"name": "name", "type": "string"}
+          ]},
+          {"name": "vendor_name", "type": "string"}
+        ]},
+        {"name": "profiles", "type": "array<string>"},
+        {"name": "version", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "cloud",
+      "type": "struct",
+      "description": "Cloud-related information",
+      "fields": [
+        {"name": "account", "type": "struct", "fields": [
+          {"name": "uid", "type": "string"}
+        ]},
+        {"name": "region", "type": "string"},
+        {"name": "zone", "type": "string"},
+        {"name": "provider", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "src_endpoint",
+      "type": "struct",
+      "description": "Source endpoint information",
+      "fields": [
+        {"name": "port", "type": "int"},
+        {"name": "svc_name", "type": "string"},
+        {"name": "ip", "type": "string"},
+        {"name": "intermediate_ips", "type": "array<string>"},
+        {"name": "interface_uid", "type": "string"},
+        {"name": "vpc_uid", "type": "string"},
+        {"name": "instance_uid", "type": "string"},
+        {"name": "subnet_uid", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "dst_endpoint",
+      "type": "struct",
+      "description": "Destination endpoint information",
+      "fields": [
+        {"name": "port", "type": "int"},
+        {"name": "svc_name", "type": "string"},
+        {"name": "ip", "type": "string"},
+        {"name": "intermediate_ips", "type": "array<string>"},
+        {"name": "interface_uid", "type": "string"},
+        {"name": "vpc_uid", "type": "string"},
+        {"name": "instance_uid", "type": "string"},
+        {"name": "subnet_uid", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "connection_info",
+      "type": "struct",
+      "description": "Connection information",
+      "fields": [
+        {"name": "protocol_num", "type": "int"},
+        {"name": "tcp_flags", "type": "int"},
+        {"name": "protocol_ver", "type": "string"},
+        {"name": "boundary_id", "type": "int"},
+        {"name": "boundary", "type": "string"},
+        {"name": "direction_id", "type": "int"},
+        {"name": "direction", "type": "string"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "traffic",
+      "type": "struct",
+      "description": "Traffic information",
+      "fields": [
+        {"name": "packets", "type": "bigint"},
+        {"name": "bytes", "type": "bigint"}
+      ],
+      "optional": true
+    },
+    {
+      "name": "time",
+      "type": "bigint",
+      "description": "Timestamp of the flow log",
+      "optional": false
+    },
+    {
+      "name": "time_dt",
+      "type": "timestamp",
+      "description": "Datetime of the flow log",
+      "optional": true
+    },
+    {
+      "name": "start_time_dt",
+      "type": "timestamp",
+      "description": "Start datetime of the flow log",
+      "optional": true
+    },
+    {
+      "name": "end_time_dt",
+      "type": "timestamp",
+      "description": "End datetime of the flow log",
+      "optional": true
+    },
+    {
+      "name": "status_code",
+      "type": "string",
+      "description": "Status code of the flow log",
+      "optional": true
+    },
+    {
+      "name": "severity_id",
+      "type": "int",
+      "description": "Severity level identifier",
+      "optional": false
+    },
+    {
+      "name": "severity",
+      "type": "string",
+      "description": "Severity level description",
+      "optional": false
+    },
+    {
+      "name": "class_name",
+      "type": "string",
+      "description": "Name of the flow log class",
+      "optional": false
+    },
+    {
+      "name": "class_uid",
+      "type": "int",
+      "description": "Unique identifier of the flow log class",
+      "optional": false
+    },
+    {
+      "name": "category_name",
+      "type": "string",
+      "description": "Name of the flow log category",
+      "optional": false
+    },
+    {
+      "name": "category_uid",
+      "type": "int",
+      "description": "Unique identifier of the flow log category",
+      "optional": false
+    },
+    {
+      "name": "activity_name",
+      "type": "string",
+      "description": "Name of the activity associated with the flow log",
+      "optional": false
+    },
+    {
+      "name": "activity_id",
+      "type": "int",
+      "description": "Unique identifier of the activity",
+      "optional": false
+    },
+    {
+      "name": "action",
+      "type": "string",
+      "description": "Action taken for the flow log",
+      "optional": true
+    },
+    {
+      "name": "action_id",
+      "type": "int",
+      "description": "Unique identifier of the action",
+      "optional": true
+    },
+    {
+      "name": "disposition",
+      "type": "string",
+      "description": "Disposition of the flow log",
+      "optional": true
+    },
+    {
+      "name": "type_uid",
+      "type": "bigint",
+      "description": "Unique identifier of the flow log type",
+      "optional": false
+    },
+    {
+      "name": "type_name",
+      "type": "string",
+      "description": "Name of the flow log type",
+      "optional": false
+    },
+    {
+      "name": "accountid",
+      "type": "string",
+      "description": "Account identifier",
+      "optional": true
+    },
+    {
+      "name": "region",
+      "type": "string",
+      "description": "Region information",
+      "optional": true
+    },
+    {
+      "name": "asl_version",
+      "type": "string",
+      "description": "Version of the Amazon Security Lake",
+      "optional": true
+    },
+    {
+      "name": "unmapped",
+      "type": "map<string,string>",
+      "description": "Additional unmapped fields",
+      "optional": true
+    },
+    {
+      "name": "observables",
+      "type": "array<struct>",
+      "description": "Array of observable information",
+      "fields": [
+        {"name": "name", "type": "string"},
+        {"name": "value", "type": "string"},
+        {"name": "type", "type": "string"},
+        {"name": "type_id", "type": "int"}
+      ],
+      "optional": true
+    }
+  ],
+  "iceberg_parameters": {
+    "write_format_version": "2",
+    "format-version": "2",
+    "schema_id": "1"
+  }
+}
