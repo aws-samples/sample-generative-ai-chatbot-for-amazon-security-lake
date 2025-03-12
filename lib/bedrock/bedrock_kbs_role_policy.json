@@ -1,0 +1,61 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "BedrockInvokeModelStatement",
+            "Effect": "Allow",
+            "Action": [
+                "bedrock:InvokeModel"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "OpenSearchServerlessAPIAccessAllStatement",
+            "Effect": "Allow",
+            "Action": [
+                "aoss:APIAccessAll"
+            ],
+            "Resource": [
+                "arn:aws:aoss:us-east-1:*:collection/*"
+            ]
+        },
+        {
+            "Sid": "S3ListBucketStatement",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceAccount": [
+                        "*"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "S3GetObjectStatement",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*/*",
+                "arn:aws:s3:::*/table_schema/*",
+                "arn:aws:s3:::*/playbooks/*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceAccount": [
+                        "*"
+                    ]
+                }
+            }
+        }
+    ]
+}
