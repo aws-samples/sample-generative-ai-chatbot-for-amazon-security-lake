@@ -122,6 +122,7 @@ export class BedrockBaseInfraStack extends Stack {
     // Create VPC for this application
     this.bedrock_vpc = new Vpc(this, "genai-security-lake", {
       maxAzs: 1,
+      restrictDefaultSecurityGroup: true,
       subnetConfiguration: [
         {
           cidrMask: 24,
