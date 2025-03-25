@@ -8,7 +8,7 @@ import {
   CfnStage,
   WebSocketApi,
 } from "aws-cdk-lib/aws-apigatewayv2";
-import { LogGroup } from "aws-cdk-lib/aws-logs";
+import { LogGroup, RetentionDays } from "aws-cdk-lib/aws-logs";
 import { NagSuppressions } from "cdk-nag";
 import { create } from "domain";
 
@@ -124,8 +124,8 @@ export class WebSocketApiGateway extends Construct {
 
   private createApiDeploymentStage(apiId: string): CfnStage {
     const accessLogGroup = new LogGroup(this, "WebSocketAccessLogGroup", {
-      logGroupName: "/aws/apigateway/websocket-access-logs",
       removalPolicy: RemovalPolicy.DESTROY,
+      retention: RetentionDays.ONE_WEEK,
     });
     return new CfnStage(this, "WebSocketApiStage", {
       apiId: apiId,
