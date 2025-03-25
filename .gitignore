@@ -1,0 +1,57 @@
+# CDK asset staging directory
+.cdk.staging
+cdk.out/
+
+# Dependencies
+node_modules/
+**/node_modules/
+package-lock.json
+**/package-lock.json
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build/dist
+dist/
+build/
+**/build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# React specific
+lib/frontend/react-app/.pnp
+lib/frontend/react-app/.pnp.js
+
+# testing
+lib/frontend/react-app/coverage
+
+# production
+lib/frontend/react-app/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
