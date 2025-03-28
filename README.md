@@ -19,11 +19,11 @@ By utilizing Bedrock's generative artificial intelligence capabilities to genera
 
 ![Architecture](architecture.png)
 
-## **Deploy Sagemaker Studio using CDK**
+## **Deploy Solution using CDK**
 
 **Build**
 
-To build this app, you need to be in the cdk project root folder. Then run the following:
+To build this app, you need to be in the project root folder. Then run the following:
 
     $ npm install -g aws-cdk
     <installs AWS CDK>
@@ -31,16 +31,16 @@ To build this app, you need to be in the cdk project root folder. Then run the f
     $ npm install
     <installs appropriate packages>
 
-    $ npm run build
-    <build TypeScript files>
+    $ cdk synth
+    <build CDK and TypeScript files>
 
 **Deploy**
 
     $ cdk bootstrap aws://<INSERT_AWS_ACCOUNT>/<INSERT_REGION>
     <build S3 bucket to store files to perform deployment>
 
-    $ cdk deploy FrontendAppStack
-    <deploys the cdk project into the authenticated AWS account. Deploys three Cloudformation stacks: "FrontendAppStack", "BedrockAppStack", "BedrockBaseInfraStack">
+    $ cdk deploy --all
+    <deploys the CDK project into the authenticated AWS account. Deploys three CloudFormation stacks: "FrontendAppStack", "BedrockAppStack", "BedrockBaseInfraStack">
 
 As part of the CDK deployment, there is an Output value for the React Application URL (FrontendAppStack.ReactAppUrl). You will use this value to interact with the GenAI application. Wait up to 5 mins for the URL to be live.
 
@@ -50,7 +50,7 @@ As part of the CDK deployment, there is an Output value for the React Applicatio
 Now that you have deployed the solution, you will need to grant the Bedrock Agent's Lambda role in your AWS account access to query Security Lake from the AWS account it was enabled in. We will use the "Grant" permission to allow the Lambda role ARN to access Security Lake Database in Lake Formation within the Subscriber AWS account.
 
 **Grant permission to Security Lake Database**
-1. Copy the Lambda's role ARN from the "BedrockAppStack" Cloudformation stack. The resource in the stack is named as "athenaAgentSecurityLakeActionGroupLambdaServiceRole********".
+1. Copy the Lambda's role ARN from the "BedrockAppStack" CloudFormation stack. The resource in the stack is named as "athenaAgentSecurityLakeActionGroupLambdaServiceRole********".
 2. Go to Lake Formation in console
 3. Select the amazon_security_lake_glue_db_<YOUR-REGION>  database.
     1. For example, if your Security Lake is in us-east-1 the value would be amazon_security_lake_glue_db_us_east_1
@@ -61,7 +61,7 @@ Now that you have deployed the solution, you will need to grant the Bedrock Agen
 <br><br> 
 
 **Grant permissions to Security Lake table(s)**
-1. Copy the Lambda's role ARN from the "BedrockAppStack" Cloudformation stack. The resource in the stack is named as "athenaAgentSecurityLakeActionGroupLambdaServiceRole********".
+1. Copy the Lambda's role ARN from the "BedrockAppStack" CloudFormation stack. The resource in the stack is named as "athenaAgentSecurityLakeActionGroupLambdaServiceRole********".
 2. Go to Lake Formation in console
 3. Select the amazon_security_lake_glue_db_<YOUR-REGION>  database.
     1. For example, if your Security Lake is in us-east-1 the value would be amazon_security_lake_glue_db_us_east_1
@@ -88,3 +88,16 @@ There are two Amazon Bedrock Knowledge Bases created as part of this solution. T
 1. gen-ai-sec-lake-table-schema. Upload additional files that provide context for the Bedrock Agent to curate SQL queries to execute on the Security Lake. Place files that have schema for the tables under /table_schema, and files that have examples of SQL queries you expect the agent to create under /example_queries. Sync the Data Sources again.
 2. gen-ai-sec-lake-runbooks. Upload additional files that provide runbooks for suggesting remediation of security findings. Placed them under /runbooks. Sync the Data Source again.
 <br><br>
+
+**Cleanup**
+
+When you are finished with the solution, delete the CloudFormation stacks to delete the AWS resources that were deployed.
+
+First, manually empty and delete the following S3 buckets from the console or AWS CLI:
+- kb-source-s3-bucket*
+- kb-source-s3-access-logs*
+
+Next, delete the CloudFormation stacks:
+
+    $ cdk destroy --all
+    <deletes the three CloudFormation stacks: "FrontendAppStack", "BedrockAppStack", "BedrockBaseInfraStack">
